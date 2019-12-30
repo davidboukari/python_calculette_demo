@@ -1,0 +1,3 @@
+
+class ExceptDivisionByZero(Exception):
+    pass
