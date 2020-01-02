@@ -57,3 +57,10 @@ def division_with_try_exception(nombre_1: int, nombre_2: int):
     except Exception:
         message = 'division by zero'
         raise ExceptDivisionByZero(message)
+
+def division_with_try_and_return_code(nombre_1: int, nombre_2: int):
+    try:
+        return 'Ok:', nombre_1 / nombre_2
+    except Exception:
+        message = 'Error: division by zero'
+        return message, -1

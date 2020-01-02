@@ -1,6 +1,8 @@
+import re
+
 from apps.exception import ExceptDivisionByZero
 from apps.operation_simple import somme, soustraction, multiplication, division, division_with_exception, \
-    division_with_try_exception
+    division_with_try_exception, division_with_try_and_return_code
 from apps.operation_advanced import racine_carre
 
 
@@ -62,8 +64,18 @@ def main():
     """
     square root
     """
-    print(f'sqrt({first_number})={racine_carre({first_number})}')
-    print(f'sqrt({second_number})={racine_carre({second_number})}')
+    racine_first_number = racine_carre(first_number)
+    racine_second_number = racine_carre(second_number)
+    print(f'sqrt({first_number})={racine_first_number}')
+    print(f'sqrt({second_number})={racine_second_number}')
+
+    message, division_result = division_with_try_and_return_code(first_number, second_number)
+    if re.match('Ok', message):
+        print(f'division_with_try_and_return_code: '
+              f'{first_number} / {second_number} = {division_result} => message={message}')
+    else:
+        print(f'division_with_try_and_return_code: message={message}')
+
 
 """
 in main call function main()
